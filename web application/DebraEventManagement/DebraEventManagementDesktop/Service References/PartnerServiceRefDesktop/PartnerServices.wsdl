@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="RegisterPartner">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="partnerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterPartnerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegisterPartnerResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginPartner">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginPartnerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginPartnerResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="partnerEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eventName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eventDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eventDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eventTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="link" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateEventResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEventAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eventName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eventDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eventDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eventTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="link" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEventAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateEventAdminResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetTicketDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ticketName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="price" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="quantity" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetTicketDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetTicketDetailsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculatePartnerEarnings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="partnerEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculatePartnerEarningsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalculatePartnerEarningsResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByPartnerId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="partnerId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByPartnerIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEventsByPartnerIdResult" type="tns:ArrayOfEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Event" nillable="true" type="tns:Event" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Event">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EventId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPartnerTicketSales">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="partnerId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartnerTicketSalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPartnerTicketSalesResult" type="tns:ArrayOfEventSales" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEventSales">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EventSales" nillable="true" type="tns:EventSales" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EventSales">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EventId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TicketsSold" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPartnerIdByEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartnerIdByEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPartnerIdByEmailResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegisterPartnerSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterPartner" />
+  </wsdl:message>
+  <wsdl:message name="RegisterPartnerSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterPartnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginPartnerSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginPartner" />
+  </wsdl:message>
+  <wsdl:message name="LoginPartnerSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginPartnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateEventSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateEvent" />
+  </wsdl:message>
+  <wsdl:message name="CreateEventSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateEventAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateEventAdmin" />
+  </wsdl:message>
+  <wsdl:message name="CreateEventAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateEventAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetTicketDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetTicketDetails" />
+  </wsdl:message>
+  <wsdl:message name="SetTicketDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetTicketDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalculatePartnerEarningsSoapIn">
+    <wsdl:part name="parameters" element="tns:CalculatePartnerEarnings" />
+  </wsdl:message>
+  <wsdl:message name="CalculatePartnerEarningsSoapOut">
+    <wsdl:part name="parameters" element="tns:CalculatePartnerEarningsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEventsByPartnerIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEventsByPartnerId" />
+  </wsdl:message>
+  <wsdl:message name="GetEventsByPartnerIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventsByPartnerIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPartnerTicketSalesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPartnerTicketSales" />
+  </wsdl:message>
+  <wsdl:message name="GetPartnerTicketSalesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPartnerTicketSalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPartnerIdByEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPartnerIdByEmail" />
+  </wsdl:message>
+  <wsdl:message name="GetPartnerIdByEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPartnerIdByEmailResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PartnerServicesSoap">
+    <wsdl:operation name="RegisterPartner">
+      <wsdl:input message="tns:RegisterPartnerSoapIn" />
+      <wsdl:output message="tns:RegisterPartnerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginPartner">
+      <wsdl:input message="tns:LoginPartnerSoapIn" />
+      <wsdl:output message="tns:LoginPartnerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEvent">
+      <wsdl:input message="tns:CreateEventSoapIn" />
+      <wsdl:output message="tns:CreateEventSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEventAdmin">
+      <wsdl:input message="tns:CreateEventAdminSoapIn" />
+      <wsdl:output message="tns:CreateEventAdminSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetTicketDetails">
+      <wsdl:input message="tns:SetTicketDetailsSoapIn" />
+      <wsdl:output message="tns:SetTicketDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalculatePartnerEarnings">
+      <wsdl:input message="tns:CalculatePartnerEarningsSoapIn" />
+      <wsdl:output message="tns:CalculatePartnerEarningsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByPartnerId">
+      <wsdl:input message="tns:GetEventsByPartnerIdSoapIn" />
+      <wsdl:output message="tns:GetEventsByPartnerIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerTicketSales">
+      <wsdl:input message="tns:GetPartnerTicketSalesSoapIn" />
+      <wsdl:output message="tns:GetPartnerTicketSalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerIdByEmail">
+      <wsdl:input message="tns:GetPartnerIdByEmailSoapIn" />
+      <wsdl:output message="tns:GetPartnerIdByEmailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PartnerServicesSoap" type="tns:PartnerServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterPartner">
+      <soap:operation soapAction="http://tempuri.org/RegisterPartner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginPartner">
+      <soap:operation soapAction="http://tempuri.org/LoginPartner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEvent">
+      <soap:operation soapAction="http://tempuri.org/CreateEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEventAdmin">
+      <soap:operation soapAction="http://tempuri.org/CreateEventAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetTicketDetails">
+      <soap:operation soapAction="http://tempuri.org/SetTicketDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculatePartnerEarnings">
+      <soap:operation soapAction="http://tempuri.org/CalculatePartnerEarnings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByPartnerId">
+      <soap:operation soapAction="http://tempuri.org/GetEventsByPartnerId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerTicketSales">
+      <soap:operation soapAction="http://tempuri.org/GetPartnerTicketSales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerIdByEmail">
+      <soap:operation soapAction="http://tempuri.org/GetPartnerIdByEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PartnerServicesSoap12" type="tns:PartnerServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterPartner">
+      <soap12:operation soapAction="http://tempuri.org/RegisterPartner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginPartner">
+      <soap12:operation soapAction="http://tempuri.org/LoginPartner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEvent">
+      <soap12:operation soapAction="http://tempuri.org/CreateEvent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEventAdmin">
+      <soap12:operation soapAction="http://tempuri.org/CreateEventAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetTicketDetails">
+      <soap12:operation soapAction="http://tempuri.org/SetTicketDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculatePartnerEarnings">
+      <soap12:operation soapAction="http://tempuri.org/CalculatePartnerEarnings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByPartnerId">
+      <soap12:operation soapAction="http://tempuri.org/GetEventsByPartnerId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerTicketSales">
+      <soap12:operation soapAction="http://tempuri.org/GetPartnerTicketSales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerIdByEmail">
+      <soap12:operation soapAction="http://tempuri.org/GetPartnerIdByEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PartnerServices">
+    <wsdl:port name="PartnerServicesSoap" binding="tns:PartnerServicesSoap">
+      <soap:address location="http://localhost:64576/PartnerServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PartnerServicesSoap12" binding="tns:PartnerServicesSoap12">
+      <soap12:address location="http://localhost:64576/PartnerServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

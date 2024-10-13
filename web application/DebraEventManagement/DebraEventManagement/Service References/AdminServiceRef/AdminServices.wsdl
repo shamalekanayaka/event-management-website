@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllEvents">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllEventsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllEventsResult" type="tns:ArrayOfEventInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEventInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EventInfo" nillable="true" type="tns:EventInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EventInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EventID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PartnerID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteTicketsForEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteTicketsForEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteTicketsForEventResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPartners">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllPartnersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPartnersResult" type="tns:ArrayOfPartner" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPartner">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Partner" nillable="true" type="tns:Partner" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Partner">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PartnerID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeletePartner">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="partnerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePartnerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeletePartnerResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalSales">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTotalSalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetTotalSalesResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalCommission">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTotalCommissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetTotalCommissionResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTicketSales">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTicketSalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTicketSalesResult" type="tns:ArrayOfTicketSaleInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTicketSaleInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TicketSaleInfo" nillable="true" type="tns:TicketSaleInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TicketSaleInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TicketID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sold" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalSale" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AdminEarnings" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteEventResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllEventsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllEvents" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEventsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTicketsForEventSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteTicketsForEvent" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTicketsForEventSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteTicketsForEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPartnersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPartners" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPartnersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPartnersResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePartnerSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePartner" />
+  </wsdl:message>
+  <wsdl:message name="DeletePartnerSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePartnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalSalesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalSales" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalSalesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalSalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalCommissionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalCommission" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalCommissionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalCommissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketSalesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTicketSales" />
+  </wsdl:message>
+  <wsdl:message name="GetTicketSalesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTicketSalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEventSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteEvent" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEventSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteEventResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AdminServicesSoap">
+    <wsdl:operation name="GetAllEvents">
+      <wsdl:input message="tns:GetAllEventsSoapIn" />
+      <wsdl:output message="tns:GetAllEventsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTicketsForEvent">
+      <wsdl:input message="tns:DeleteTicketsForEventSoapIn" />
+      <wsdl:output message="tns:DeleteTicketsForEventSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPartners">
+      <wsdl:input message="tns:GetAllPartnersSoapIn" />
+      <wsdl:output message="tns:GetAllPartnersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePartner">
+      <wsdl:input message="tns:DeletePartnerSoapIn" />
+      <wsdl:output message="tns:DeletePartnerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalSales">
+      <wsdl:input message="tns:GetTotalSalesSoapIn" />
+      <wsdl:output message="tns:GetTotalSalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalCommission">
+      <wsdl:input message="tns:GetTotalCommissionSoapIn" />
+      <wsdl:output message="tns:GetTotalCommissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketSales">
+      <wsdl:input message="tns:GetTicketSalesSoapIn" />
+      <wsdl:output message="tns:GetTicketSalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvent">
+      <wsdl:input message="tns:DeleteEventSoapIn" />
+      <wsdl:output message="tns:DeleteEventSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdminServicesSoap" type="tns:AdminServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllEvents">
+      <soap:operation soapAction="http://tempuri.org/GetAllEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTicketsForEvent">
+      <soap:operation soapAction="http://tempuri.org/DeleteTicketsForEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPartners">
+      <soap:operation soapAction="http://tempuri.org/GetAllPartners" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePartner">
+      <soap:operation soapAction="http://tempuri.org/DeletePartner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalSales">
+      <soap:operation soapAction="http://tempuri.org/GetTotalSales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalCommission">
+      <soap:operation soapAction="http://tempuri.org/GetTotalCommission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketSales">
+      <soap:operation soapAction="http://tempuri.org/GetTicketSales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvent">
+      <soap:operation soapAction="http://tempuri.org/DeleteEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminServicesSoap12" type="tns:AdminServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllEvents">
+      <soap12:operation soapAction="http://tempuri.org/GetAllEvents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTicketsForEvent">
+      <soap12:operation soapAction="http://tempuri.org/DeleteTicketsForEvent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPartners">
+      <soap12:operation soapAction="http://tempuri.org/GetAllPartners" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePartner">
+      <soap12:operation soapAction="http://tempuri.org/DeletePartner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalSales">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalSales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalCommission">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalCommission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketSales">
+      <soap12:operation soapAction="http://tempuri.org/GetTicketSales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEvent">
+      <soap12:operation soapAction="http://tempuri.org/DeleteEvent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminServices">
+    <wsdl:port name="AdminServicesSoap" binding="tns:AdminServicesSoap">
+      <soap:address location="http://localhost:64576/AdminServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminServicesSoap12" binding="tns:AdminServicesSoap12">
+      <soap12:address location="http://localhost:64576/AdminServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
